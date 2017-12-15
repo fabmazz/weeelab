@@ -39,9 +39,10 @@ if sys.platform == 'linux':
     if UID == 0:  # root execution check
         raise PermissionError("can't execute " + EXECNAME + " as root.")
     HOSTUSER = pwd.getpwuid(UID).pw_name  # "weeeopen"
-    LOG_PATH = "/home/{}/.local/share/{}/log.dat".format(HOSTUSER, HOSTNAME)
-    USERS_PATH = "/home/{}/.local/share/{}/users.json".format(HOSTUSER,
-                                                              HOSTNAME)
+    #BASE_DIR = "/home/{}/.local/share/{}/".format(HOSTUSER,HOSTNAME)
+    BASE_DIR = ""
+    LOG_PATH = BASE_DIR+"log.dat"
+    USERS_PATH=BASE_DIR+ "users.json"
     BACKUP_PATH = "/home/{}/ownCloud/weeeopen/{}/".format(HOSTUSER, HOSTNAME)
 elif sys.platform == 'win32':  # only for tests
     debuggingState = True
